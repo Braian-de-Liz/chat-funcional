@@ -87,7 +87,7 @@ body {
 
 #chat {
     width: 90vw;
-    height: 90vh;
+    height: 90dvh;
     display: none;
     flex-direction: column;
     justify-content: flex-end;
