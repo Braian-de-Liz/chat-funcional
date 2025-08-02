@@ -1,8 +1,16 @@
-function ajustaAlturaTela() {
-    const alturaReal = window.innerHeight;
+function ajustaAlturaComViewport() {
+    const alturaReal = window.visualViewport?.height || window.innerHeight;
     document.documentElement.style.setProperty('--altura-viewport', `${alturaReal}px`);
 }
 
-window.addEventListener('resize', ajustaAlturaTela);
-window.addEventListener('orientationchange', ajustaAlturaTela);
-window.addEventListener('load', ajustaAlturaTela);
+ajustaAlturaComViewport();
+window.visualViewport?.addEventListener('resize', ajustaAlturaComViewport);
+window.addEventListener('orientationchange', ajustaAlturaComViewport);
+
+
+const input = document.querySelector('.chat-input');
+input?.addEventListener('focus', () => {
+    setTimeout(() => {
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300); // espera o teclado abrir
+});
