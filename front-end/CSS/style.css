@@ -5,8 +5,9 @@
 }
 
 body {
-    /* background: linear-gradient(to left top, #2e3440, #3b4252, #4c566a, #463950); */
     background: linear-gradient(to left top, #0f2027, #203a43, #2c5364);
+    background-size: 600% 600%;
+    animation: gradiente-animado 20s ease infinite;
     min-height: 100dvh;
     display: flex;
     justify-content: center;
@@ -194,6 +195,20 @@ body {
     -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), inset 0 0 0.5px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes gradiente-animado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @media (max-width: 750px) {
