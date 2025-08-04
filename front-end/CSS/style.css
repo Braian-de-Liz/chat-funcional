@@ -213,7 +213,6 @@ body {
 
 @media (max-width: 750px) {
     body {
-        background: linear-gradient(to left top, #2e3440, #3b4252, #4c566a, #463950);
         min-height: 100vh;
         display: flex;
         justify-content: center;
