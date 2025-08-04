@@ -10,7 +10,7 @@ const chatmensagens = chat.querySelector("#chat-mensagens");
 let ws;
 
 
-function escrevaVisual(contet){
+function escrevaVisual(contet) {
     const div = document.createElement("div");
 
     div.classList.add("mensUser");
@@ -19,7 +19,7 @@ function escrevaVisual(contet){
     return div
 }
 
-function EscreveOutroVisu(contet, escritor, cor){
+function EscreveOutroVisu(contet, escritor, cor) {
     const div = document.createElement("div");
     const span = document.createElement("span");
 
@@ -31,7 +31,7 @@ function EscreveOutroVisu(contet, escritor, cor){
     span.innerHTML = escritor;
     span.style.color = cor;
     div.innerHTML += contet;
-    
+
 
     return div;
 }
@@ -46,11 +46,12 @@ function corAleatoria() {
     return cores[sorteio];
 }
 
-function scroolChat(){
-    window.scrollTo({
-        top: document.body.scrollHeight,behavior:"smooth"
-    })
+function scroolChat() {
+    setTimeout(() => {
+        chatmensagens.scrollTop = chatmensagens.scrollHeight;
+    }, 50);
 }
+
 
 const Usuario = {
     id: "",
@@ -59,9 +60,9 @@ const Usuario = {
 };
 
 function mensagemEnvia({ data }) {
-    const{usuarioID, usuarioNome, usuarioCor, contet} = JSON.parse(data);
+    const { usuarioID, usuarioNome, usuarioCor, contet } = JSON.parse(data);
     const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet) : EscreveOutroVisu(contet, usuarioNome, usuarioCor);
-    
+
 
     chatmensagens.appendChild(mensagemExibir);
     scroolChat();
@@ -94,9 +95,9 @@ function escreveMens(e) {
     e.preventDefault();
 
     const mensagem = {
-        usuarioID:Usuario.id,
-        usuarioNome:Usuario.nome,
-        usuarioCor:Usuario.corUser,
+        usuarioID: Usuario.id,
+        usuarioNome: Usuario.nome,
+        usuarioCor: Usuario.corUser,
         contet: chatinput.value
 
     }
