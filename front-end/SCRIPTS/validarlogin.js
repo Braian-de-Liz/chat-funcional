@@ -39,7 +39,7 @@ function EscreveOutroVisu(contet, escritor, cor) {
 
 
 
-const cores = ['blueviolet', 'cadetblue', 'brown', 'coral', 'cornflowerblue'];
+const cores = ['blueviolet', 'cadetblue', 'brown', 'coral', 'cornflowerblue', 'aqua', 'teal', 'deeppink', 'yellow', 'springgreen'];
 
 function corAleatoria() {
     const sorteio = Math.floor(Math.random() * cores.length);
