@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,15 @@
     <link rel="shortcut icon" href="CSS/imagens/logo.fav.png" type="image/x-icon">
     <title>Braian Chat</title>
 </head>
+
 <body>
+
+    <div>
+        <button id="botaoMODO" class="botaooMODO">
+            <img id="iconModo" src="CSS/imagens/imagemLua.svg" alt="Ícone de tema" />
+        </button>
+    </div>
+
     <main>
         <section id="container">
             <section id="Login">
@@ -15,7 +24,8 @@
                 <form action="" id="login__form" onsubmit="return ValidaRegistro(event)">
                     <input type="text" class="login_input" name="nome" placeholder="Nome" required>
                     <input type="email" class="login_input" id="email" name="email" required placeholder="Email">
-                    <input type="number" class="login_input" id="Idade" name="idade" required placeholder="Idade" min="13" max="120">
+                    <input type="number" class="login_input" id="Idade" name="idade" required placeholder="Idade"
+                        min="13" max="120">
                     <button type="submit" class="login__button">Entrar</button>
                 </form>
 
@@ -26,7 +36,7 @@
                 <div id="chat-container">
                     <section id="chat-mensagens"></section>
                 </div>
-                
+
                 <form class="chat_form">
                     <input type="text" class="chat-input" placeholder="Digite sua mensagem">
                     <!-- <input type="image" class="chatButon"> -->
@@ -39,4 +49,5 @@
     <script src="SCRIPTS/validarlogin.js"></script>
     <script src="SCRIPTS/ajustadorHV.js"></script>
 </body>
+
 </html>

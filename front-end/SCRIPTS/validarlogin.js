@@ -6,20 +6,24 @@ const chat = document.getElementById("chat");
 const chatFormu = chat.querySelector(".chat_form");
 const chatinput = chat.querySelector(".chat-input");
 const chatmensagens = chat.querySelector("#chat-mensagens");
-
+const agora = new Date();
+const hora = agora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 let ws;
 
 
-function escrevaVisual(contet) {
+function escrevaVisual(contet, hora) {
     const div = document.createElement("div");
-
     div.classList.add("mensUser");
-    div.innerHTML = contet;
 
-    return div
+    div.innerHTML = `
+        <p>${contet}</p>
+        <span class="hora-mensagem">${hora}</span>
+    `;
+
+    return div;
 }
 
-function EscreveOutroVisu(contet, escritor, cor) {
+function EscreveOutroVisu(contet, escritor, cor, hora) {
     const div = document.createElement("div");
     const span = document.createElement("span");
 
@@ -30,8 +34,9 @@ function EscreveOutroVisu(contet, escritor, cor) {
 
     span.innerHTML = escritor;
     span.style.color = cor;
-    div.innerHTML += contet;
 
+    div.innerHTML += contet;
+    div.innerHTML += `<span class="hora-mensagem">${hora}</span>`;
 
     return div;
 }
@@ -60,13 +65,12 @@ const Usuario = {
 };
 
 function mensagemEnvia({ data }) {
-    const { usuarioID, usuarioNome, usuarioCor, contet } = JSON.parse(data);
-    const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet) : EscreveOutroVisu(contet, usuarioNome, usuarioCor);
+    const { usuarioID, usuarioNome, usuarioCor, contet, hora } = JSON.parse(data);
 
+    const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet, hora) : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
 
     chatmensagens.appendChild(mensagemExibir);
     scroolChat();
-
 }
 
 
@@ -88,18 +92,21 @@ const submitFunc = (e) => {
     };
 
     ws.onmessage = mensagemEnvia;
-    //wswswswswswswswswswswswswswswswswswswsws
+    //wswswswswswswswswswswswswswswswswswswswswswswswswsw
 };
 
 function escreveMens(e) {
     e.preventDefault();
 
+    const agora = new Date();
+    const hora = agora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
     const mensagem = {
         usuarioID: Usuario.id,
         usuarioNome: Usuario.nome,
         usuarioCor: Usuario.corUser,
-        contet: chatinput.value
-
+        contet: chatinput.value,
+        hora: hora
     }
 
     const texto = chatinput.value.trim();
@@ -107,9 +114,30 @@ function escreveMens(e) {
 
     ws.send(JSON.stringify(mensagem));
 
-
     chatinput.value = "";
 }
 
+
+
+const botaoModo = document.getElementById("botaoMODO");
+const iconeModo = document.getElementById("iconModo");
+
+function alteraTema() {
+    document.body.classList.toggle("modo-claro");
+
+    const estaClaro = document.body.classList.contains("modo-claro");
+
+    if (estaClaro) {
+        iconeModo.src = "CSS/imagens/imagemSol.svg";
+    }
+    else {
+        iconeModo.src = "CSS/imagens/imagemLua.svg";
+    }
+}
+
+
+
+
 form_login.addEventListener("submit", submitFunc);
 chatFormu.addEventListener("submit", escreveMens);
+botaoModo.addEventListener("click", alteraTema);
