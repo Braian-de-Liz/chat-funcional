@@ -57,6 +57,16 @@ function scroolChat() {
     }, 50);
 }
 
+function animarEntrada(div) {
+    div.style.opacity = 0;
+    div.style.transform = "translateY(10px)";
+    requestAnimationFrame(() => {
+        div.style.transition = "all 0.3s ease";
+        div.style.opacity = 1;
+        div.style.transform = "translateY(0)";
+    });
+}
+
 
 const Usuario = {
     id: "",
@@ -68,8 +78,8 @@ function mensagemEnvia({ data }) {
     const { usuarioID, usuarioNome, usuarioCor, contet, hora } = JSON.parse(data);
 
     const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet, hora) : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
-
     chatmensagens.appendChild(mensagemExibir);
+    animarEntrada(mensagemEnvia)
     scroolChat();
 }
 
@@ -148,16 +158,16 @@ const placeholderText = "Digite sua mensagem...";
 let i = 0;
 
 function escreverPlaceholder() {
-  if (i <= placeholderText.length) {
-    input.placeholder = placeholderText.slice(0, i++);
-    setTimeout(escreverPlaceholder, 20);
-  }
+    if (i <= placeholderText.length) {
+        input.placeholder = placeholderText.slice(0, i++);
+        setTimeout(escreverPlaceholder, 20);
+    }
 }
 
 input.addEventListener("focus", () => input.placeholder = "");
 input.addEventListener("blur", () => {
-  i = 0;
-  escreverPlaceholder();
+    i = 0;
+    escreverPlaceholder();
 });
 
 escreverPlaceholder();

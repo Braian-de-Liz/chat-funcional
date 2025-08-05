@@ -12,5 +12,5 @@ const input = document.querySelector('.chat-input');
 input?.addEventListener('focus', () => {
     setTimeout(() => {
         input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300); // espera o teclado abrir
+    }, 300); 
 });
