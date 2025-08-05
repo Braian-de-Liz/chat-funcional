@@ -138,7 +138,7 @@ function alteraTema() {
     const estaClaro = document.body.classList.contains("modo-claro");
 
     if (estaClaro) {
-        iconeModo.src = "CSS/imagens/imagemSol.svg";
+        iconeModo.src = "CSS/imagens/imagemSol.png";
     }
     else {
         iconeModo.src = "CSS/imagens/imagemLua.svg";
