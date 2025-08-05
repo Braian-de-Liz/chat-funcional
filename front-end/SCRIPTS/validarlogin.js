@@ -150,7 +150,7 @@ let i = 0;
 function escreverPlaceholder() {
   if (i <= placeholderText.length) {
     input.placeholder = placeholderText.slice(0, i++);
-    setTimeout(escreverPlaceholder, 80);
+    setTimeout(escreverPlaceholder, 20);
   }
 }
 
