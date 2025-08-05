@@ -141,3 +141,23 @@ function alteraTema() {
 form_login.addEventListener("submit", submitFunc);
 chatFormu.addEventListener("submit", escreveMens);
 botaoModo.addEventListener("click", alteraTema);
+
+
+const input = document.querySelector(".chat-input");
+const placeholderText = "Digite sua mensagem...";
+let i = 0;
+
+function escreverPlaceholder() {
+  if (i <= placeholderText.length) {
+    input.placeholder = placeholderText.slice(0, i++);
+    setTimeout(escreverPlaceholder, 80);
+  }
+}
+
+input.addEventListener("focus", () => input.placeholder = "");
+input.addEventListener("blur", () => {
+  i = 0;
+  escreverPlaceholder();
+});
+
+escreverPlaceholder();
