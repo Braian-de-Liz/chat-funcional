@@ -238,7 +238,7 @@ body {
 }
 
 .botaooMODO:hover img {
-    transform: rotate(200deg);
+    transform: rotate(360deg);
     scale: 1.1;
 }
 
