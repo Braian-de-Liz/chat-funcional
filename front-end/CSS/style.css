@@ -347,13 +347,13 @@ body.modo-claro .chat-input {
         padding: 0;
         border: 0;
         width: 100%;
-        height: auto; /* deixa crescer conforme o conteúdo */
+        height: 100vh; /* deixa crescer conforme o conteúdo */
     }
 
     #chat-container {
         width: 100%;
         padding: 10px;
-        box-sizing: border-box; /* evita estourar a largura */
+        box-sizing: border-box; 
     }
 
     .botaooMODO {
