@@ -38,6 +38,8 @@ function EscreveOutroVisu(contet, escritor, cor, hora) {
     div.innerHTML += contet;
     div.innerHTML += `<span class="hora-mensagem">${hora}</span>`;
 
+    console.log("funcionou certinho");
+
     return div;
 }
 
@@ -81,6 +83,8 @@ function mensagemEnvia({ data }) {
     chatmensagens.appendChild(mensagemExibir);
     animarEntrada(mensagemEnvia)
     scroolChat();
+
+    console.log("funcionou certinho");
 }
 
 
@@ -125,6 +129,8 @@ function escreveMens(e) {
     ws.send(JSON.stringify(mensagem));
 
     chatinput.value = "";
+
+    console.log("funcionou certinho");
 }
 
 
@@ -171,3 +177,6 @@ input.addEventListener("blur", () => {
 });
 
 escreverPlaceholder();
+
+
+

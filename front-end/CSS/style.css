@@ -101,7 +101,7 @@ button {
 /* ======= CHAT ======= */
 
 #chat {
-    width: 90vw;
+    width: 90dvw;
     height: 90vh;
     display: none;
     flex-direction: column;
@@ -309,6 +309,10 @@ body.modo-claro .chat-input {
         border: 0;
         width: 100%;
         height: 100%;
+    }
+
+    #chat-container {
+        
     }
 
     .botaooMODO {
