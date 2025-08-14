@@ -20,6 +20,7 @@ function escrevaVisual(contet, hora) {
         <span class="hora-mensagem">${hora}</span>
     `;
 
+    console.log("Ele escreveu a mensagem do usuário certa");
     return div;
 }
 
@@ -38,7 +39,7 @@ function EscreveOutroVisu(contet, escritor, cor, hora) {
     div.innerHTML += contet;
     div.innerHTML += `<span class="hora-mensagem">${hora}</span>`;
 
-    console.log("funcionou certinho");
+    console.log("Ele escreveu a mensagem do outro usuário certa");
 
     return div;
 }
@@ -62,6 +63,9 @@ function scroolChat() {
 function animarEntrada(div) {
     div.style.opacity = 0;
     div.style.transform = "translateY(10px)";
+
+    console.log("fdyhgdsfhgihgushgifudhgidhgiuhdfgrbgiurbgibgibidbgifbvhfbvdrgdgrg");
+
     requestAnimationFrame(() => {
         div.style.transition = "all 0.3s ease";
         div.style.opacity = 1;
