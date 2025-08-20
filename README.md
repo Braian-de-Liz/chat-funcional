@@ -38,3 +38,16 @@ Uma página de chat desenvolvida com **HTML**, **CSS** e **JavaScript** no front
 ```bash
 git clone https://github.com/SeuUsuario/chat-funcional.git
 cd chat-funcional
+
+```
+
+2. Acesse a pasta back-end:
+``` bash
+cd back-end
+```
+
+3. Baixe os Módulos do NODE.JS
+```bash
+npm i install
+
+```
