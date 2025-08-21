@@ -12,20 +12,24 @@ console.log(`Servidor WebSocket rodando na porta ${PORT}`);
 wss.on("connection", (ws) => {
     console.log("Cliente conectado.");
 
-    ws.send("mensagem enviada pelo server");
+
+    ws.send(JSON.stringify({
+        usuarioID: "system",
+        usuarioNome: "Sistema",
+        usuarioCor: "gray",
+        contet: "Bem-vindo ao chat!",
+        hora: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    }));
 
     ws.on("message", (data) => {
         console.log("Recebido do cliente:", data.toString());
 
-        
         wss.clients.forEach((client) => {
-            if (client.readyState === 1) {
-                client.send(data.toString());
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(data); 
             }
         });
     });
 
     ws.on("error", console.error);
 });
-
-// espero que funcione de volta;
