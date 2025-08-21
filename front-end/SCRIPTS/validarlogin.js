@@ -1,3 +1,4 @@
+// Seleção de elementos
 const login = document.getElementById("Login");
 const form_login = login.querySelector("#login__form");
 const form_input = login.querySelector(".login_input");
@@ -9,6 +10,7 @@ const chatmensagens = chat.querySelector("#chat-mensagens");
 
 let ws;
 
+// Funções de exibição de mensagens
 function escrevaVisual(conteudo, hora) {
     const div = document.createElement("div");
     div.classList.add("mensUser");
@@ -40,6 +42,7 @@ function EscreveOutroVisu(conteudo, escritor, cor, hora) {
     return div;
 }
 
+// Cores aleatórias
 const cores = [
     'blueviolet', 'cadetblue', 'brown', 'coral', 'cornflowerblue',
     'aqua', 'teal', 'deeppink', 'yellow', 'springgreen'
@@ -50,12 +53,14 @@ function corAleatoria() {
     return cores[sorteio];
 }
 
+// Scroll automático
 function scroolChat() {
     setTimeout(() => {
         chatmensagens.scrollTop = chatmensagens.scrollHeight;
     }, 50);
 }
 
+// Animação de entrada
 function animarEntrada(div) {
     div.style.opacity = 0;
     div.style.transform = "translateY(10px)";
@@ -69,47 +74,35 @@ function animarEntrada(div) {
     console.log("menssagem animada com sucesso");
 }
 
+// Dados do usuário
 const Usuario = {
     id: "",
     nome: "",
     corUser: ""
 };
 
+// Função chamada quando uma mensagem é recebida
 function mensagemEnvia({ data }) {
     let msg;
-
     try {
         msg = JSON.parse(data);
-
-        if (
-            typeof msg.usuarioID !== "string" ||
-            typeof msg.usuarioNome !== "string" ||
-            typeof msg.contet !== "string" ||
-            typeof msg.hora !== "string"
-        ) {
-            console.log("Mensagem recebida não é de usuário (estrutura inválida):", data);
-            return; 
-        }
-
-        const { usuarioID, usuarioNome, usuarioCor, contet, hora } = msg;
-
-        const mensagemExibir = usuarioID === Usuario.id
-            ? escrevaVisual(contet, hora)
-            : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
-
-        chatmensagens.appendChild(mensagemExibir);
-        animarEntrada(mensagemExibir);
-        scroolChat();
-
-        console.log("Mensagem de usuário exibida:", msg);
-
     } catch (err) {
-        console.error("Falha ao parsear JSON (mensagem ignorada):", data);
+        console.error("Falha ao parsear JSON:", data);
+        return;
     }
 
+    const { usuarioID, usuarioNome, usuarioCor, contet, hora } = msg;
+
+    const mensagemExibir = usuarioID === Usuario.id
+        ? escrevaVisual(contet, hora)
+        : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
+
+    chatmensagens.appendChild(mensagemExibir);
+    animarEntrada(mensagemExibir);
+    scroolChat();
 }
 
-
+// Submissão do login
 const submitFunc = (e) => {
     e.preventDefault();
 
@@ -122,8 +115,10 @@ const submitFunc = (e) => {
     login.style.display = "none";
     chat.style.display = "flex";
 
+    // Conectar WebSocket
     ws = new WebSocket("wss://chat-braian-de-liz.onrender.com");
 
+    // ✅ Definir eventos ANTES do onopen
     ws.onmessage = mensagemEnvia;
     ws.onerror = (error) => console.error("Erro no WebSocket:", error);
     ws.onclose = () => console.log("Conexão fechada. Tente recarregar a página.");
@@ -147,6 +142,7 @@ const submitFunc = (e) => {
     };
 };
 
+// Enviar mensagem no chat
 function escreveMens(e) {
     e.preventDefault();
 
@@ -170,6 +166,7 @@ function escreveMens(e) {
     console.log("enviada");
 }
 
+// Alternar tema claro/escuro
 const botaoModo = document.getElementById("botaoMODO");
 const iconeModo = document.getElementById("iconModo");
 
@@ -181,6 +178,7 @@ function alteraTema() {
         : "CSS/imagens/imagemLua.svg";
 }
 
+// Animação do placeholder
 const input = document.querySelector(".chat-input");
 const placeholderText = "Digite sua mensagem...";
 let i = 0;
@@ -200,6 +198,7 @@ input.addEventListener("blur", () => {
 
 escreverPlaceholder();
 
+// Event Listeners
 form_login.addEventListener("submit", submitFunc);
 chatFormu.addEventListener("submit", escreveMens);
 botaoModo.addEventListener("click", alteraTema);
