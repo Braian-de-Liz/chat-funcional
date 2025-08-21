@@ -12,20 +12,19 @@ console.log(`Servidor WebSocket rodando na porta ${PORT}`);
 wss.on("connection", (ws) => {
     console.log("Cliente conectado.");
 
-    // ✅ NENHUMA mensagem é enviada pelo servidor
-    // → O cliente que decide o que exibir ao conectar
+    ws.send("mensagem enviada pelo server");
 
     ws.on("message", (data) => {
         console.log("Recebido do cliente:", data.toString());
 
+        
         wss.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(data);
+            if (client.readyState === 1) {
+                client.send(data.toString());
             }
         });
     });
 
-    ws.on("error", (error) => {
-        console.error("Erro no WebSocket:", error);
-    });
+    ws.on("error", console.error);
 });
+ 
