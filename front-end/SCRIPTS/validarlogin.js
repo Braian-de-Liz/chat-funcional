@@ -78,7 +78,7 @@ function animarEntrada(div) {
     div.style.opacity = 0;
     div.style.transform = "translateY(10px)";
 
-    console.log("fdyhgdsfhgihgushgifudhgidhgiuhdfgrbgiurbgibgibidbgifbvhfbvdrgdgrg");
+    console.log("Animação funcional");
 
     requestAnimationFrame(() => {
         div.style.transition = "all 0.3s ease";
