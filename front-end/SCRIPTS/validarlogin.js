@@ -99,10 +99,9 @@ function mensagemEnvia({ data }) {
 
     const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet, hora) : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
     chatmensagens.appendChild(mensagemExibir);
-    animarEntrada(mensagemEnvia)
-    // animarEntrada(mensagemExibir);
-    scroolChat();
     // animarEntrada(mensagemEnvia)
+    animarEntrada(mensagemExibir);
+    scroolChat();
 
     console.log("funcionou certinho");
 }
