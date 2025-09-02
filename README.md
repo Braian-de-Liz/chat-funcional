@@ -18,7 +18,6 @@ Uma página de chat desenvolvida com **HTML**, **CSS** e **JavaScript** no front
 - Interface de login com nome personalizado
 - Envio e recepção de mensagens em tempo real
 - Diferenciação visual entre mensagens do usuário e dos outros
-- Estilo simples e funcional para simular um chat real
 
 ---
 
