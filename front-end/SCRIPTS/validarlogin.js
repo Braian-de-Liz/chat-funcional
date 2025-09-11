@@ -60,6 +60,20 @@ function scroolChat() {
     }, 50);
 }
 
+/* function animarEntrada(div) {
+    div.style.opacity = 0;
+    div.style.transform = "translateY(10px)";
+
+    console.log("fdyhgdsfhgihgushgifudhgidhgiuhdfgrbgiurbgibgibidbgifbvhfbvdrgdgrg");
+
+    requestAnimationFrame(() => {
+        div.style.transition = "all 0.3s ease";
+        div.style.opacity = 1;
+        div.style.transform = "translateY(0)";
+    });
+}
+ */
+
 function animarEntrada(div) {
     div.style.opacity = 0;
     div.style.transform = "translateY(10px)";
@@ -85,7 +99,8 @@ function mensagemEnvia({ data }) {
 
     const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet, hora) : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
     chatmensagens.appendChild(mensagemExibir);
-    animarEntrada(mensagemEnvia)
+    // animarEntrada(mensagemEnvia)
+    animarEntrada(mensagemExibir);
     scroolChat();
 
     console.log("funcionou certinho");
@@ -186,6 +201,3 @@ input.addEventListener("blur", () => {
 });
 
 escreverPlaceholder();
-
-
-
