@@ -102,7 +102,8 @@ const submitFunc = (e) => {
     login.style.display = "none";
     chat.style.display = "flex";
 
-    ws = new WebSocket("wss://chat-braian-de-liz.onrender.com");
+    // ws = new WebSocket("wss://chat-braian-de-liz.onrender.com");
+    ws = new WebSocket("wss://localhost 8080");
 
     ws.onopen = () => {
         console.log("WebSocket conectado.");
@@ -137,6 +138,10 @@ function escreveMens(e) {
     console.log("funcionou certinho");
 }
 
+ws.onclose = () => {
+    addSystemMessage("Conexão perdida. Reconectando...");
+    setTimeout(connectWebSocket, 3000);
+};
 
 
 const botaoModo = document.getElementById("botaoMODO");
