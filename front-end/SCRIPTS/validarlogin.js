@@ -60,20 +60,6 @@ function scroolChat() {
     }, 50);
 }
 
-/* function animarEntrada(div) {
-    div.style.opacity = 0;
-    div.style.transform = "translateY(10px)";
-
-    console.log("fdyhgdsfhgihgushgifudhgidhgiuhdfgrbgiurbgibgibidbgifbvhfbvdrgdgrg");
-
-    requestAnimationFrame(() => {
-        div.style.transition = "all 0.3s ease";
-        div.style.opacity = 1;
-        div.style.transform = "translateY(0)";
-    });
-}
- */
-
 function animarEntrada(div) {
     div.style.opacity = 0;
     div.style.transform = "translateY(10px)";
@@ -99,8 +85,7 @@ function mensagemEnvia({ data }) {
 
     const mensagemExibir = usuarioID == Usuario.id ? escrevaVisual(contet, hora) : EscreveOutroVisu(contet, usuarioNome, usuarioCor, hora);
     chatmensagens.appendChild(mensagemExibir);
-    // animarEntrada(mensagemEnvia)
-    animarEntrada(mensagemExibir);
+    animarEntrada(mensagemEnvia)
     scroolChat();
 
     console.log("funcionou certinho");
@@ -117,8 +102,7 @@ const submitFunc = (e) => {
     login.style.display = "none";
     chat.style.display = "flex";
 
-    // ws = new WebSocket("wss://chat-braian-de-liz.onrender.com");
-    ws = new WebSocket("wss://localhost 8080");
+    ws = new WebSocket("wss://chat-braian-de-liz.onrender.com");
 
     ws.onopen = () => {
         console.log("WebSocket conectado.");
@@ -153,10 +137,6 @@ function escreveMens(e) {
     console.log("funcionou certinho");
 }
 
-ws.onclose = () => {
-    addSystemMessage("Conexão perdida. Reconectando...");
-    setTimeout(connectWebSocket, 3000);
-};
 
 
 const botaoModo = document.getElementById("botaoMODO");
@@ -201,3 +181,6 @@ input.addEventListener("blur", () => {
 });
 
 escreverPlaceholder();
+
+
+
