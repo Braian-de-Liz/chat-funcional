@@ -67,7 +67,7 @@ function animarEntrada(div) {
     console.log("fdyhgdsfhgihgushgifudhgidhgiuhdfgrbgiurbgibgibidbgifbvhfbvdrgdgrg");
 
     requestAnimationFrame(() => {
-        div.style.transition = "all 0.3s ease";
+        div.style.transition = "all 0.4s ease";
         div.style.opacity = 1;
         div.style.transform = "translateY(0)";
     });
@@ -110,7 +110,7 @@ const submitFunc = (e) => {
     };
 
     ws.onmessage = mensagemEnvia;
-    //wswswswswswswswswswswswswswswswswswswswswswswswswsw
+    // wswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
 };
 
 function escreveMens(e) {
