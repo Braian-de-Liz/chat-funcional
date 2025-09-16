@@ -6,11 +6,13 @@ yarn-debug.log
 .pnpm-debug.log*
 
 # Ambiente
+
 .env
 .env.local
 .env.development
 .env.test
 .env.production
+.env
 
 # Build
 /dist
